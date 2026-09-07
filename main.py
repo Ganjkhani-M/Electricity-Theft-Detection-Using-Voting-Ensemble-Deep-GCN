@@ -88,7 +88,8 @@ def main():
     embeddings, loss_history = train_gcn(
         x_scaled_all, y_clean, train_mask, val_mask, edge_index_user,
         hidden=config.hidden_dim, embed_dim=config.embed_dim,
-        lr=config.learning_rate, epochs=config.epochs, patience=config.patience,
+        lr=config.learning_rate,weight_decay = config.weight_decay,
+        epochs=config.epochs, patience=config.patience,
         print_loss_every=config.print_loss_every,
         plot_loss=config.plot_loss,
         k_neighbors=config.k_neighbors
