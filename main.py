@@ -113,17 +113,17 @@ def main():
         map_k=config.MAP_K
     )
 
-    # 8. ارزیابی نهایی
-    probs = ensemble.predict_proba(X_test_full)[:, 1]
+    # Final Evaluation
+    probs = ensemble.predict_proba(x_test_full)[:, 1]
     auc = roc_auc_score(y_test_full, probs)
     map100 = map_at_k(y_test_full, probs, 100)
     map200 = map_at_k(y_test_full, probs, 200)
 
     print("\n" + "=" * 60)
-    print(f"✅ FINAL RESULTS (12‑Layer GCN (no residual) + Voting Ensemble, K={config.K_NEIGHBORS})")
+    print(f" FINAL RESULTS (12‑Layer GCN (no residual) + Voting Ensemble, K={config.k_neighbors})")
     print("=" * 60)
-    print(f"Train ratio  : {config.TRAIN_RATIO:.2f}")
-    print(f"Fraction     : {config.FRACTION:.2f}")
+    print(f"Train ratio  : {config.train_ratio:.2f}")
+    print(f"Fraction     : {config.fraction:.2f}")
     print(f"Test size    : {len(y_test_full)}")
     print(f"AUC          : {auc:.4f}")
     print(f"MAP@100      : {map100:.4f}")
