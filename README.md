@@ -1,4 +1,4 @@
-# Electricity Theft Detection using Hybrid Deep GCN and Weighted Voting Ensemble model
+# Electricity Theft Detection using Hybrid Deep GCN and Weighted Voting Ensemble 
 
 This Project presents a hybrid model for identifying fraudulent users ( electricity theft) using daily consumption data. The proposed architecture consists of three main stages:
 1. User-User Graph Construction: Using the KNN algorithm and cosine distance to discover similar consumption patterns.
