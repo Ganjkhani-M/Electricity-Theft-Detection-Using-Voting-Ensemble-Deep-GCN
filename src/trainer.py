@@ -93,7 +93,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
                   plt.title(f"GCN with K={k_neighbors}/ considering residual connections : {use_residual} / Training Loss")
                   plt.grid(alpha = 0.4)
                   plt.tight_layout()
-                  plt.savefig(f'results/gcn_training_loss_12layers_K{k_neighbors}.png', dpi=200)
+                  plt.savefig(f'results/gcn_training_loss_12layers_K{k_neighbors}_residual{use_residual}.png', dpi=200)
                   plt.show()
                   print(f"Training loss plot saved as 'results/gcn_training_loss_12layers_K{k_neighbors}.png'")
                 return embeddings , loss_history
