@@ -143,6 +143,7 @@ def main():
             'AUC_with_GCN': auc,
             'MAP100_with_GCN': map100,
             'MAP200_with_GCN': map200
+            'use_residual' : config.use_residual
         }
         df_result = pd.DataFrame([result_row])
         if os.path.exists(config.results_file):
