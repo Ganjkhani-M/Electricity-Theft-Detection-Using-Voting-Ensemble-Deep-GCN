@@ -131,18 +131,18 @@ def main():
     print("=" * 60)
 
     # 9. ذخیره نتایج
-    if config.SAVE_RESULTS:
+    if config.save_results:
         os.makedirs("results", exist_ok=True)
         result_row = {
-            'K': config.K_NEIGHBORS,
-            'training_ratio': config.TRAIN_RATIO,
-            'fraction': config.FRACTION,
+            'K': config.k_neighbors,
+            'training_ratio': config.train_ratio,
+            'fraction': config.fraction,
             'AUC_with_GCN': auc,
             'MAP100_with_GCN': map100,
             'MAP200_with_GCN': map200
         }
         df_result = pd.DataFrame([result_row])
-        if os.path.exists(config.RESULTS_FILE):
+        if os.path.exists(config.results_file):
             df_existing = pd.read_csv(config.RESULTS_FILE)
             df_existing = df_existing[~((df_existing['K'] == config.K_NEIGHBORS) &
                                         (df_existing['training_ratio'] == config.TRAIN_RATIO) &
