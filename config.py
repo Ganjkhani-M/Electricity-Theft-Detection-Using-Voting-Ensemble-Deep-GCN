@@ -15,7 +15,7 @@ train_ratio = 0.7
 #### GCN Model Settings 
 k_neighbors = 70 # KNN with k=70
 hidden_dim = 32 # Dimension of the hidden fully connected layer
-embedding_dim = 32 # Dimension of the embedding (The GCN's output)
+embed_dim = 32 # Dimension of the embedding (The GCN's output)
 GCN_layers = 12 # Number of GCN layers
 learning_rate = 1e-4 # Learning rate
 weight_decay = 1e-4  
