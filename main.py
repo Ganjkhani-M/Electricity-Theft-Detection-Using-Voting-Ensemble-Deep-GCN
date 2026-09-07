@@ -152,6 +152,7 @@ def main():
             df_combined = df_result
         df_combined.to_csv(config.results_file, index=False)
         print(f"Results saved to {config.results_file}")
+        
 
 
 if __name__ == "__main__":
