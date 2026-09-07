@@ -89,6 +89,7 @@ def main():
         x_scaled_all, y_clean, train_mask, val_mask, edge_index_user,
         hidden=config.hidden_dim, embed_dim=config.embed_dim,
         lr=config.learning_rate,weight_decay = config.weight_decay,
+        num_layers = config.GCN_layers,
         epochs=config.epochs, patience=config.patience,
         print_loss_every=config.print_loss_every,
         plot_loss=config.plot_loss,
