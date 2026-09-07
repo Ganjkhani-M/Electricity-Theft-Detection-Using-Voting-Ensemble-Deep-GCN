@@ -26,8 +26,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
 
                 # Positive class weighting to deal with data imbalance
                 pos_weight = torch.tensor([
-                                          (y[train_mask.cpu()] == 0.sum() / max((y[train_mask.cpu()] == 1).sum(), 1)
-                                           ]).to(device)
+                                          (y[train_mask.cpu()] == 0).sum() / max((y[train_mask.cpu()] == 1).sum(), 1)]).to(device)
                 criterion = nn.BCEWithLogitsLoss(pos_weight = pos_weight)
                 optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
                 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience = 10, factor=0.5)
