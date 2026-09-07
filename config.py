@@ -21,7 +21,7 @@ learning_rate = 1e-4 # Learning rate
 weight_decay = 1e-4  
 epochs = 150
 patience = 30
-
+use_residual = False
 
 #### Voting Ensemble Settings
 oversample_factor = 7
