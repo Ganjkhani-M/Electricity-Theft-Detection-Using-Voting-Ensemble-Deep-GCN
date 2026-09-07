@@ -20,7 +20,7 @@ from sklearn.metrics import roc_auc_score
 
 def main():
     print("\n" + "=" * 60)
-    print("CONFIGURATION (GCN 12 layers – NO residual)")
+    print("CONFIGURATION (GCN {config.GCN_layers} layers – Residual:{config.use_residual})")
     print("=" * 60)
     print(f"CSV Path         : {config.csv_path}")
     print(f"Fraction         : {config.fraction:.2f}")
@@ -84,7 +84,7 @@ def main():
     val_mask[train_val_idx[val_idx]] = True
 
     # Training the GCN
-    print("\n--- Starting GCN Training (12 layers, no residual) ---")
+    print("\n--- Starting GCN Training (GCN {config.GCN_layers} layers – Residual:{config.use_residual}) ---")
     embeddings, loss_history = train_gcn(
         x_scaled_all, y_clean, train_mask, val_mask, edge_index_user,
         hidden=config.hidden_dim, embed_dim=config.embed_dim,
