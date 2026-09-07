@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 from .models import UserGCN
 
-def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, lr=1e-4,
+def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, lr=1e-4,weight_decay=1e-4,
               epochs=150, patience = 30, print_loss_every=5, plot_loss=False, k_neighbors=70):
 
                 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -28,7 +28,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
                 pos_weight = torch.tensor([
                                           (y[train_mask.cpu()] == 0).sum() / max((y[train_mask.cpu()] == 1).sum(), 1)]).to(device)
                 criterion = nn.BCEWithLogitsLoss(pos_weight = pos_weight)
-                optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
+                optimizer = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=weight_decay)
                 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience = 10, factor=0.5)
                 best_val_auc = 0
                 best_state = None
