@@ -21,7 +21,7 @@ learning_rate = 1e-4 # Learning rate
 weight_decay = 1e-4  
 epochs = 150
 patience = 30
-use_residual = False
+use_residual = False # If you want to add residual connections to the GCN, change 'user_residual' to 'True'. 
 
 #### Voting Ensemble Settings
 oversample_factor = 7
