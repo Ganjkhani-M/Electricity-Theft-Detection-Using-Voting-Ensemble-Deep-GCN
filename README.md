@@ -36,9 +36,10 @@ This Project presents a hybrid model for identifying fraudulent users ( electric
 ## How we can run the entire code?
 1. Install the required libraries:
    pip install -r requirements.txt
-2. Set the dataset CSV path in the 'config.py'.
-3. (Optional) Set 'use_residual = True' in 'config.py' to enable residual connections between GCN layers. 
-4. Execute the main script:
+2. Download the dataset CSV file from this link : https://drive.google.com/file/d/1wy9YGnJn9LowRKe8ALvQvHaRL8HLAJTF/view?usp=sharing
+3. Set the dataset CSV path in the 'config.py'.
+4. (Optional) Set 'use_residual = True' in 'config.py' to enable residual connections between GCN layers. 
+5. Execute the main script:
    python main.py
 
 
