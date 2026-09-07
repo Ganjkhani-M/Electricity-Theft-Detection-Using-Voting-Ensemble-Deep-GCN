@@ -3,7 +3,7 @@
 This Project presents a hybrid model for identifying fraudulent users ( electricity theft) using daily consumption data. The proposed architecture consists of three main stages:
 1. User-User Graph Construction: Using the KNN algorithm and cosine distance to discover similar consumption patterns.
 
-2. Deep Embedding Extraction: Using a 12-layer GCN (No Residual Connections) that models structural relationships between users.
+2. Deep Embedding Extraction: Using a 12-layer GCN that models structural relationships between users. Residual connections between layers are optional and can be toggled via 'config.py' ('use_residual'); by default they are disabled. 
 
 3. Final Classification: Using a Weighted Voting Ensemble consisting of three HistGradientBoosting model and one RandomForest, where the weight of each model is determined based on MAP@100 on the validation data.
 
@@ -17,6 +17,8 @@ This Project presents a hybrid model for identifying fraudulent users ( electric
 3: Handling Imbalance: Oversampling with a factor of 7 for the positive class + positive weighting in the GCN loss function. 
 
 4: Smart Ensemble Weighting: Using the MAP@K metric instead of Accuracy to prioritize the detection of fraudulent users at higher ranks. 
+
+5: Configurable GCN Architecture: Number of layers, hidden/embedding dimensions, and optional residual connections between layers can all be set from 'config.py'.
 
 
 
@@ -35,12 +37,13 @@ This Project presents a hybrid model for identifying fraudulent users ( electric
 1. Install the required libraries:
    pip install -r requirements.txt
 2. Set the dataset CSV path in the 'config.py'.
-3. Execute the main script:
+3. (Optional) Set 'use_residual = True' in 'config.py' to enable residual connections between GCN layers. 
+4. Execute the main script:
    python main.py
 
 
 ## Results
-Results will saved in 'results/learning_curve_results_k_study.csv', and the loss curve plot is stored in the 'results/' folder. 
+Results are saved in 'results/learning_curve_results_k_study.csv', and the loss curve plot is stored in the 'results/' folder. 
 The primary evaluation metrics are AUC, MAP@100, and MAP@200. 
    
 
