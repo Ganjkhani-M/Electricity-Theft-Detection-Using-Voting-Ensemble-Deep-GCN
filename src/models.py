@@ -7,8 +7,9 @@ from torch_geometric.nn import GCNConv
 
 
 class UserGCN(nn.Module):
-  def __init__(self, in_channels, hidden=32, out_embed=32, num_layers = 12):
+  def __init__(self, in_channels, hidden=32, out_embed=32, num_layers = 12, use_residual=False):
     super().__init__()
+    self.use_residual = use_residual
 
     self.convs = nn.ModuleList()
     self.bns = nn.ModuleList()
@@ -26,9 +27,12 @@ class UserGCN(nn.Module):
     x , edge_index = data.x , data.edge_index
 
     for i , (conv , bn) in enumerate(zip(self.convs, self.bns)):
+      residual = x
       x = conv(x, edge_index)
       x = bn(x)
       x = F.relu(x)
+      if self.use_residual and i>0 :
+        x = x + residual
       if i < len(self.convs) - 1: # Using the dropout for all layers except the last one
         x = self.dropout(x)
 
