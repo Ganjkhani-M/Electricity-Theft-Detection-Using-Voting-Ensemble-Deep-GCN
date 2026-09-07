@@ -30,9 +30,9 @@ class UserGCN(nn.Module):
       residual = x
       x = conv(x, edge_index)
       x = bn(x)
-      x = F.relu(x)
       if self.use_residual and i>0 :
         x = x + residual
+      x = F.relu(x)
       if i < len(self.convs) - 1: # Using the dropout for all layers except the last one
         x = self.dropout(x)
 
