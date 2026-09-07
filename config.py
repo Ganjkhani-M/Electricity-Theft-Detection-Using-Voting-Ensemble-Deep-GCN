@@ -9,7 +9,7 @@ import os
 ##### Data Settings 
 csv_path = '/content/Electricity.csv' 
 fraction = 1.0 
-training_ratio = 0.7
+train_ratio = 0.7
 
 
 #### GCN Model Settings 
