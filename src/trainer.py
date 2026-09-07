@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from .models import UserGCN
 
 def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, lr=1e-4,weight_decay=1e-4,
-              num_layers = 12, epochs=150, patience = 30, print_loss_every=5, plot_loss=False, k_neighbors=70):
+              num_layers = 12, use_residual=False, epochs=150, patience = 30, print_loss_every=5, plot_loss=False, k_neighbors=70):
 
                 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -22,7 +22,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
                 data.val_mask = val_mask
                 data = data.to(device)
 
-                model = UserGCN(in_channels = x.shape[1], hidden = hidden, out_embed = embed_dim, num_layers = num_layers).to(device)
+                model = UserGCN(in_channels = x.shape[1], hidden = hidden, out_embed = embed_dim, num_layers = num_layers, use_residual = use_residual).to(device)
 
                 # Positive class weighting to deal with data imbalance
                 pos_weight = torch.tensor([
