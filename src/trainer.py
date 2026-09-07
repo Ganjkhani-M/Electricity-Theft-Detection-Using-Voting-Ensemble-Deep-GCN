@@ -23,6 +23,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
                 data = data.to(device)
 
                 model = UserGCN(in_channels = x.shape[1], hidden = hidden, out_embed = embed_dim, num_layers = num_layers, use_residual = use_residual).to(device)
+                print(f'Training GCN on {device}. Residual Connections: {use_residual}')
 
                 # Positive class weighting to deal with data imbalance
                 pos_weight = torch.tensor([
