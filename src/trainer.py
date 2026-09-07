@@ -36,7 +36,7 @@ def train_gcn(x, y, train_mask, val_mask, edge_index, hidden=32, embed_dim=32, l
                 trigger = 0
                 loss_history = [] 
 
-                print(f'Training GCN on {device}.')
+                
                 print(f'K = {k_neighbors}')
                 print(f"{'Epoch' : >6} | {'Train Loss' : >12} | {'Val AUC' : >10}")
                 print("-" * 40)
