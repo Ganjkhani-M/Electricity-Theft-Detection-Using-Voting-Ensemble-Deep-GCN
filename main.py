@@ -130,7 +130,7 @@ def main():
     print(f"MAP@200      : {map200:.4f}")
     print("=" * 60)
 
-    # 9. ذخیره نتایج
+    # Saving the Results
     if config.save_results:
         os.makedirs("results", exist_ok=True)
         result_row = {
@@ -143,15 +143,15 @@ def main():
         }
         df_result = pd.DataFrame([result_row])
         if os.path.exists(config.results_file):
-            df_existing = pd.read_csv(config.RESULTS_FILE)
-            df_existing = df_existing[~((df_existing['K'] == config.K_NEIGHBORS) &
-                                        (df_existing['training_ratio'] == config.TRAIN_RATIO) &
-                                        (df_existing['fraction'] == config.FRACTION))]
+            df_existing = pd.read_csv(config.results_file)
+            df_existing = df_existing[~((df_existing['K'] == config.k_neighbors) &
+                                        (df_existing['training_ratio'] == config.train_ratio) &
+                                        (df_existing['fraction'] == config.fraction))]
             df_combined = pd.concat([df_existing, df_result], ignore_index=True)
         else:
             df_combined = df_result
-        df_combined.to_csv(config.RESULTS_FILE, index=False)
-        print(f"✅ Results saved to {config.RESULTS_FILE}")
+        df_combined.to_csv(config.results_file, index=False)
+        print(f"Results saved to {config.results_file}")
 
 
 if __name__ == "__main__":
